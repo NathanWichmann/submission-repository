@@ -1,5 +1,5 @@
 const Header = (props) => {
-  console.log(props)
+
   return (
     <div>
       <h1 className="d-flex justify-content-center mt-3">{props.course.name}</h1>
@@ -11,7 +11,7 @@ const Header = (props) => {
 
 
 const Content = (props) => {
-  
+  console.log(props)
   return (
     <div>
       <h1>{props.course.parts[0].name} </h1>
@@ -51,12 +51,14 @@ const App = () => {
       }
     ]
   }
+
+ 
   
   
   return (
     <div>
       <Header course={course} />
-      <Content course={course} />
+      <Content course={course}/>
       <Total course={course}/>
     </div>
   )
