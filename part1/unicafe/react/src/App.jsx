@@ -1,11 +1,20 @@
 import { useState } from 'react'
 
+
+import './index.css'
 import './App.css'
 
-const StatisticLine = ({props, text, value}) => {
+const StatisticLine = ({text, value}) => {
 
   return (
-    <p>{text}: {value}</p>
+  <>
+    
+        <tr>
+          <td>{text} </td>
+          <td>{value}</td>
+        </tr>
+      
+  </>
   )
 }
 
@@ -19,13 +28,16 @@ const Statistics = (props) => {
   return (
     <>
     <h2>Statistics </h2>
-        <StatisticLine text='Good' value={props.good} />
-        <StatisticLine text='Neutral' value={props.neutral} />
-        <StatisticLine text='Bad' value={props.bad} />
-        <StatisticLine text='All' value={props.good + props.neutral + props.bad} />
-        <StatisticLine text='Average' value={(props.good + props.neutral + props.bad)/3} />
-        <StatisticLine text='Positive Average' value={(props.good + props.neutral) /2} />
-
+    <table>
+      <tbody>
+    <StatisticLine text='Good' value={props.good} />
+    <StatisticLine text='Neutral' value={props.neutral} />
+    <StatisticLine text='Bad' value={props.bad} />
+    <StatisticLine text='All' value={props.good + props.neutral + props.bad} />
+    <StatisticLine text='Average' value={(props.good + props.neutral + props.bad)/3} />
+    <StatisticLine text='Positive Average' value={(props.good + props.neutral) /2} />
+    </tbody>
+    </table>
     </>
   )
 
@@ -53,16 +65,12 @@ function App() {
 
   return (
     <>
-    <div className="card">
-      <h1>Give Feedback </h1>
+    <h1>Give Feedback </h1>
         <Button handleClick={handleGood} text='Good'/>
         <Button handleClick={handleNeutral} text='Neutral' />
         <Button handleClick={handleBad} text='Bad' />
-    </div>
-      <Statistics good={good} neutral={neutral} bad={bad}/>
-
-      
-    </>
+        <Statistics good={good} neutral={neutral} bad={bad}/>
+      </>
   )
 }
 
