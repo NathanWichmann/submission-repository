@@ -20,7 +20,8 @@ const StatisticLine = ({text, value}) => {
 
 
 const Statistics = (props) => {
-  if(props.good === 0 && props.neutral === 0 && props.bad === 0) {
+  const total = props.good + props.neutral + props.bad
+  if(total === 0 ) {
     return (
       <h2>No feedback given</h2>
     )  }
@@ -28,14 +29,14 @@ const Statistics = (props) => {
   return (
     <>
     <h2>Statistics </h2>
-    <table>
+    <table className='center'>
       <tbody>
     <StatisticLine text='Good' value={props.good} />
     <StatisticLine text='Neutral' value={props.neutral} />
     <StatisticLine text='Bad' value={props.bad} />
-    <StatisticLine text='All' value={props.good + props.neutral + props.bad} />
-    <StatisticLine text='Average' value={(props.good + props.neutral + props.bad)/3} />
-    <StatisticLine text='Positive Average' value={(props.good + props.neutral) /2} />
+    <StatisticLine text='All' value={total} />
+    <StatisticLine text='Average' value={(props.good + props.neutral - props.bad)/total * 100} />
+    <StatisticLine text='Positive Average' value={(props.good + props.neutral)/total * 100 }/>
     </tbody>
     </table>
     </>
