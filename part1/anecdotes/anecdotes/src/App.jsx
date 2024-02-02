@@ -9,13 +9,7 @@ const Button = ({handleClick, text}) => (
   </button>
 )
 
-const Random = (props) => {
-  console.log(props.anecdotes)
-  
 
-
-  
-}
 
 function App() {
   const anecdotes = [
@@ -30,12 +24,14 @@ function App() {
   ]
   
   const [selected, setSelected] = useState(0)
+  
 
-  const handleAnecdotes = () => {setSelected(Random)}
+  const handleAnecdotes = () => {setSelected(selected)}
 
   return (
     <div>
-      <Random anecdotes={anecdotes} />
+      {selected}
+      
       <Button handleClick={handleAnecdotes} text='Next Anicdote' />
     </div>
   )
