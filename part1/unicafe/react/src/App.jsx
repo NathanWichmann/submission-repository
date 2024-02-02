@@ -6,6 +6,14 @@ import './App.css'
 
 const StatisticLine = ({text, value}) => {
 
+  if (text == "Average" || text == "Positive")
+  return (
+    <tr>
+    <td>{text} </td>
+    <td>{value.toFixed(1) + " %"}</td>
+  </tr>
+
+)
   return (
   <>
     
@@ -36,7 +44,7 @@ const Statistics = (props) => {
     <StatisticLine text='Bad' value={props.bad} />
     <StatisticLine text='All' value={total} />
     <StatisticLine text='Average' value={(props.good + props.neutral - props.bad)/total * 100} />
-    <StatisticLine text='Positive Average' value={(props.good + props.neutral)/total * 100 }/>
+    <StatisticLine text='Positive' value={(props.good + props.neutral)/total * 100 }/>
     </tbody>
     </table>
     </>
